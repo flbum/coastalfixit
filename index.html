@@ -4,168 +4,487 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Coastal Fix It | Local IT Help for Small Businesses</title>
-  <meta name="description" content="Coastal Fix It provides local IT support, troubleshooting, device setup, network help, and technology maintenance for small businesses." />
+  <title>Coastal Fix It | Small Business IT Support</title>
+  <meta name="description" content="Coastal Fix It provides practical local IT support, troubleshooting, device setup, network help, and technology maintenance for small businesses." />
 
   <style>
+    :root {
+      --bg: #071317;
+      --bg-soft: #0d1f24;
+      --card: #102a31;
+      --card-light: #f8fafc;
+      --text: #e5f4f6;
+      --muted: #a7c4ca;
+      --dark-text: #17252a;
+      --accent: #2dd4bf;
+      --accent-dark: #0f766e;
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
       line-height: 1.6;
-      color: #1f2937;
-      background: #f8fafc;
     }
 
-    header {
-      background: #0f766e;
-      color: white;
-      padding: 48px 20px;
-      text-align: center;
+    a {
+      color: inherit;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(7, 19, 23, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
     }
 
-    header p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 16px auto 0;
-    }
-
-    nav {
-      background: #115e59;
-      padding: 12px;
-      text-align: center;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 12px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    main {
-      max-width: 1000px;
+    .nav {
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 32px 20px;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
     }
 
-    section {
-      background: white;
-      margin-bottom: 24px;
-      padding: 24px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
     }
 
-    h2 {
-      color: #0f766e;
-      margin-top: 0;
+    .brand span {
+      color: var(--accent);
     }
 
-    .services {
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 88px 20px 72px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 36px;
+      align-items: center;
     }
 
-    .card {
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      padding: 16px;
-      background: #f9fafb;
+    .badge {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--accent);
+      background: rgba(45, 212, 191, 0.08);
+      font-weight: 700;
+      font-size: 0.9rem;
     }
 
-    .cta {
-      text-align: center;
-      background: #ecfeff;
-      border: 1px solid #99f6e4;
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      line-height: 1.02;
+      letter-spacing: -2px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 1.15rem;
+    }
+
+    .hero-actions {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
     }
 
     .button {
       display: inline-block;
-      background: #0f766e;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
+      padding: 13px 18px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #042f2e;
       text-decoration: none;
-      font-weight: bold;
-      margin-top: 12px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      box-shadow: 0 10px 24px rgba(45, 212, 191, 0.18);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+
+    .hero-card {
+      background: linear-gradient(160deg, rgba(45, 212, 191, 0.18), rgba(16, 42, 49, 1));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h2 {
+      margin-top: 0;
+      font-size: 1.35rem;
+    }
+
+    .quick-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .quick-list li {
+      padding: 10px 0;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .quick-list li:last-child {
+      border-bottom: none;
+    }
+
+    .section-light {
+      background: #f8fafc;
+      color: var(--dark-text);
+    }
+
+    .section {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 72px 20px;
+    }
+
+    .section-title {
+      max-width: 720px;
+      margin-bottom: 34px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+
+    .section-title p {
+      color: #52656b;
+      font-size: 1.05rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+    }
+
+    .card .icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      color: #0f3f3b;
+    }
+
+    .card p {
+      margin: 0;
+      color: #52656b;
+    }
+
+    .dark-section {
+      background: var(--bg);
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+    }
+
+    .panel h2,
+    .panel h3 {
+      margin-top: 0;
+    }
+
+    .panel p,
+    .panel li {
+      color: var(--muted);
+    }
+
+    .check-list {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .cta {
+      text-align: center;
+      background: linear-gradient(160deg, rgba(45, 212, 191, 0.18), rgba(7, 19, 23, 1));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 46px 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -1px;
+    }
+
+    .cta p {
+      max-width: 680px;
+      margin: 16px auto 0;
+      color: var(--muted);
+    }
+
+    .email-fallback {
+      font-size: 0.95rem;
+      color: var(--muted);
     }
 
     footer {
-      text-align: center;
-      padding: 24px;
-      color: #64748b;
-      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+      padding: 30px 20px;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 800px) {
+      .hero,
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+      }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>Coastal Fix It</h1>
-    <p>Practical IT help for small businesses that need their technology to work without the drama.</p>
+  <header class="site-header">
+    <nav class="nav">
+      <div class="brand">Coastal <span>Fix It</span></div>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
   </header>
 
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
   <main>
-    <section id="services">
-      <h2>What We Help With</h2>
-      <div class="services">
-        <div class="card">
-          <h3>Computer & Device Setup</h3>
-          <p>Workstations, printers, accounts, software, and general troubleshooting.</p>
+    <section class="hero">
+      <div>
+        <div class="badge">Local IT help for small businesses</div>
+        <h1>Technology support without the corporate nonsense.</h1>
+        <p>
+          Coastal Fix It helps small businesses set up, troubleshoot, clean up, and maintain the technology they rely on every day.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button" href="mailto:support@coastalfixit.com?subject=Service%20Request%20for%20Coastal%20Fix%20It">
+            Request Help
+          </a>
+          <a class="button secondary" href="#services">View Services</a>
         </div>
 
-        <div class="card">
-          <h3>Small Business IT Support</h3>
-          <p>Basic technology maintenance, user support, updates, and problem solving.</p>
+        <p class="email-fallback">
+          Or email us directly at <strong>support@coastalfixit.com</strong>
+        </p>
+      </div>
+
+      <aside class="hero-card">
+        <h2>Practical help for everyday tech problems.</h2>
+        <ul class="quick-list">
+          <li>Computer and device setup</li>
+          <li>Printer and scanner troubleshooting</li>
+          <li>Wi-Fi and small network cleanup</li>
+          <li>Basic website and business tech support</li>
+          <li>Clear explanations without the jargon fog machine</li>
+        </ul>
+      </aside>
+    </section>
+
+    <div class="section-light">
+      <section id="services" class="section">
+        <div class="section-title">
+          <h2>Support for the tech that keeps your business moving.</h2>
+          <p>
+            Simple, reliable help for small businesses that need working equipment, cleaner systems, and fewer “why is this broken again?” moments.
+          </p>
         </div>
 
-        <div class="card">
-          <h3>Network Help</h3>
-          <p>Routers, Wi-Fi issues, basic cabling, device connections, and office network cleanup.</p>
+        <div class="cards">
+          <div class="card">
+            <div class="icon">💻</div>
+            <h3>Computer & Device Setup</h3>
+            <p>New computers, user accounts, software setup, updates, and basic troubleshooting.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🖨️</div>
+            <h3>Printer & Office Tech Help</h3>
+            <p>Printers, scanners, label printers, shared devices, and office equipment issues.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">📡</div>
+            <h3>Wi-Fi & Network Cleanup</h3>
+            <p>Router setup, device connections, network organization, and small office Wi-Fi help.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🌐</div>
+            <h3>Website & Domain Help</h3>
+            <p>Simple websites, domains, email setup, DNS cleanup, and small business web presence.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🧰</div>
+            <h3>General Troubleshooting</h3>
+            <p>We help diagnose weird tech problems and find practical fixes that make sense.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🔒</div>
+            <h3>Basic Security Cleanup</h3>
+            <p>Password manager setup, 2FA guidance, account cleanup, and safer everyday practices.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section id="about" class="section dark-section">
+      <div class="two-column">
+        <div class="panel">
+          <h2>Built for small businesses, not IT departments.</h2>
+          <p>
+            Coastal Fix It focuses on practical technology support for small businesses that need help without getting buried in confusing technical language.
+          </p>
+          <p>
+            The goal is simple: understand the problem, explain the options, and fix what can be fixed.
+          </p>
         </div>
 
-        <div class="card">
-          <h3>Website & Tech Projects</h3>
-          <p>Simple websites, forms, automation ideas, and practical tech improvements.</p>
+        <div class="panel">
+          <h3>Why work with us?</h3>
+          <ul class="check-list">
+            <li>Clear communication</li>
+            <li>Practical recommendations</li>
+            <li>Small business friendly</li>
+            <li>Local, flexible support</li>
+            <li>No bloated corporate IT energy</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section id="about">
-      <h2>About Coastal Fix It</h2>
-      <p>
-        Coastal Fix It is a local technology support service focused on helping small businesses keep their equipment,
-        systems, and daily operations running smoothly.
-      </p>
-      <p>
-        We believe IT support should be clear, practical, and understandable. No confusing jargon. No mystery invoices.
-        Just help fixing the thing that is currently making your day worse.
-      </p>
-    </section>
+    <section id="contact" class="section">
+      <div class="cta">
+        <h2>Need help with your business tech?</h2>
+        <p>
+          Send a quick email with what is going on, what equipment or software is involved, and how urgent the issue is.
+        </p>
 
-    <section id="contact" class="cta">
-      <h2>Need Help?</h2>
-      <p>Contact Coastal Fix It to discuss your business technology issue or project.</p>
-      <p><strong>Email:</strong> support@coastalfixit.com</p>
-      <p><strong>Service Area:</strong> Local small business support</p>
-      <a class="button" href="mailto:support@coastalfixit.com">Email Coastal Fix It</a>
+        <div class="hero-actions" style="justify-content: center;">
+          <a class="button" href="mailto:support@coastalfixit.com?subject=Service%20Request%20for%20Coastal%20Fix%20It">
+            Email Coastal Fix It
+          </a>
+        </div>
+
+        <p class="email-fallback">
+          support@coastalfixit.com
+        </p>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2026 Coastal Fix It. All rights reserved.</p>
+    <div class="footer-inner">
+      <div>
+        <strong>Coastal Fix It</strong><br />
+        Local IT help for small businesses.
+      </div>
+      <div>
+        <a href="mailto:support@coastalfixit.com">support@coastalfixit.com</a><br />
+        &copy; 2026 Coastal Fix It. All rights reserved.
+      </div>
+    </div>
   </footer>
 </body>
 </html>

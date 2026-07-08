@@ -318,22 +318,18 @@
     }
 
     .hero-logo {
-      width: min(380px, 100%);
+      width: min(390px, 100%);
       height: auto;
       display: block;
       margin-bottom: 60px;
       padding: 18px;
-      border-radius: 32px;
-      background:
-        radial-gradient(
-          circle,
-          rgba(29, 230, 211, 0.18) 0%,
-          rgba(28, 99, 242, 0.10) 38%,
-          rgba(6, 17, 31, 0) 72%
-        );
-      filter:
-        drop-shadow(0 0 22px rgba(29, 230, 211, 0.22))
-        drop-shadow(0 0 44px rgba(28, 99, 242, 0.14));
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(29, 230, 211, 0.45);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.18),
+        0 18px 45px rgba(0, 0, 0, 0.22),
+        0 0 32px rgba(29, 230, 211, 0.16);
     }
 
     @media (max-width: 800px) {
